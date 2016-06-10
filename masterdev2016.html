@@ -68,8 +68,8 @@
 		}
 
 
-		#step-analyzed {
-			background-color: #de4887;
+		#step-final {
+			background-color: lightblue;
 			/*background-image: url('http://i.kinja-img.com/gawker-media/image/upload/nc0zjjk16k1xjfvmwhcc.jpg');
 			background-size: cover;*/
 		}
@@ -82,13 +82,13 @@
 			text-align: center;
 		}
 
-		#step-loading > div {
+		#step-loading1 > div, #step-loading2 > div {
 			text-align: center;
 			color: black;
 			max-width: 60%;
 		}
 
-		#step-loading > div h3 {
+		#step-loading1 > div h3, #step-loading2 > div h3 {
 			font-size: 4vw;
 		}
 
@@ -105,6 +105,15 @@
  			justify-content: center;
 		}
 
+		.valign-inner {
+			text-align: center;
+		}
+
+		.imageboxes {
+			padding-top: 50px;
+			padding-left: 6vw;
+		}
+
 		.picbox {
 			float: left;
 			width: 15vw;
@@ -119,9 +128,8 @@
 </head>
 <body>
 
+	<a name="step-choose"></a>
 	<div id="step-choose" class="step">
-		<a name="step-choose"></a>
-
 		<div class="textbox">
 				<h1>Hungrigare än vanligt?</h1>
 				<p>
@@ -138,31 +146,35 @@
 
 	</div>
 
-	<div id="step-loading" class="step valign">
-		<a name="step-loading"></a>
-		<div>
+	<a name="step-loading1"></a>
+	<div id="step-loading1" class="step valign">
+		<div class="valign-inner">
 			<img src="calculator.gif">
 			<h3>Nu utför vår avancerade AI beräkningar i molnet för att kalkylera din personliga meny...</h3>
 		</div>
 	</div>
 
+	<a name="step-gotpictures"></a>
 	<div id="step-gotpictures" class="step valign">
-		<a name="step-gotpictures"></a>
-			<h1>Vad ser smaskigt ut?</h1>
-			<div id="imageboxes">
-
-<!--
-<img class="picbox" src="https://s-media-cache-ak0.pinimg.com/236x/e9/8f/80/e98f805457a6a8c400553436f60c665f.jpg"><img class="picbox" src="http://cook-wise.com/wp-content/uploads/parser/famous-german-food-9.jpg"><img class="picbox" src="https://www.germany101.com/assets/img/germany101/culture/Balinese_Roasted_Pork_Ribs_-_Iga_Babi_Panggang_Bali.jpg"><img class="picbox" src="https://s-media-cache-ak0.pinimg.com/236x/cf/c7/f8/cfc7f88b2cfc006b2a331393aa3938c6.jpg"><img class="picbox" src="http://cook-wise.com/wp-content/uploads/parser/german-food-culture-5.jpg"><img class="picbox" src="http://www.sbs.com.au/food/sites/sbs.com.au.food/files/styles/single/public/marble-cake.jpg?itok=Kn00QmJH&amp;mtime=1414645011"><img class="picbox" src="http://www.expatica.com/media/upload/thumbs/418920.jpg"><img class="picbox" src="http://www.germany.info/contentblob/2012040/Hauptbereichsbild/222104/German_Food_cbx.jpg"><img class="picbox" src="http://www.worldwidewebawards.net/Food/images/labskaus_germany.jpg"><img class="picbox" src="https://storage.googleapis.com/cf2.primecp.com/master_images/AllFreeSlowCookerRecipes/bevarian-meatball.jpg">
--->
-
+			<div class="valign-inner">
+				<h1>Vad ser smaskigt ut?</h1>
+				<div id="imageboxes">
+				</div>
 			</div>
 	</div>
 
-
-	<div id="step-analyzed" class="step">
-		<a name="step-analyzed"></a>
-			<!--<h1>Vad ser smaskigt ut?</h1>-->
+	<a name="step-loading2"></a>
+	<div id="step-loading2" class="step valign">
+		<div class="valign-inner">
+			<img src="calculator.gif">
+			<h3>Nu utför vår avancerade AI beräkningar i molnet för att kalkylera din personliga meny...</h3>
+		</div>
 	</div>
+
+	<a name="step-final"></a>
+	<div id="step-final" class="step">
+	</div>
+
 
 
 
