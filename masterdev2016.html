@@ -1,71 +1,206 @@
 ﻿<!doctype html>
 <html>
 <head>
-	<!--<link rel="stylesheet" type="text/css" media="all" href="http://bool.se/wp-content/themes/Bool2013/style.css" />-->
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+
 	<style>
-		body {
-			margin: 10px;
-			padding: 10px;
-			text-align: center;
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
 		}
-		
+
+		html, body {
+			height: 100%;
+			font-family: 'Righteous', sans-serif;
+			color: white;
+
+  
+
+		}
+				
+		h1 {
+			font-size: 5vw;
+			color: white;
+			text-shadow: -1px -1px 0 deeppink, 1px -1px 0 deeppink, -1px 1px 0 deeppink, 1px 1px 0 deeppink;
+		}
+		/*h2 {
+			font-size: 3vw;
+			color: white;
+			text-shadow: -1px -1px 0 deeppink, 1px -1px 0 deeppink, -1px 1px 0 deeppink, 1px 1px 0 deeppink;
+		}
+		h3 {
+			font-size: 2vw;
+			color: white;
+			text-shadow: -1px -1px 0 deeppink, 1px -1px 0 deeppink, -1px 1px 0 deeppink, 1px 1px 0 deeppink;
+		}*/
+
+		.pinktext {
+			color: white;
+			text-shadow: -1px -1px 0 deeppink, 1px -1px 0 deeppink, -1px 1px 0 deeppink, 1px 1px 0 deeppink;
+		}
+		p {
+			font-size: 2vmin;
+		}
+
 		div.step {
-			margin-top: 50px;
+			width: 100%;
+			height: 100%;
+			position: relative;
+			
 		}
 		
-		#step-choose{
-			
+		#step-choose {
+			background-image: url('start.png');
+			background-size: cover;
 		}
 
 		#step-loading {
-			display: none;
+			background-color: white;
+		}
+
+		#step-gotpictures {
+			background-color: #de4887;
+			/*background-image: url('http://i.kinja-img.com/gawker-media/image/upload/nc0zjjk16k1xjfvmwhcc.jpg');
+			background-size: cover;*/
+		}
+
+
+		#step-analyzed {
+			background-color: #de4887;
+			/*background-image: url('http://i.kinja-img.com/gawker-media/image/upload/nc0zjjk16k1xjfvmwhcc.jpg');
+			background-size: cover;*/
 		}
 		
+
+		#step-choose .textbox {
+			position: absolute;
+			bottom: 50px;
+			width: 100%;
+			text-align: center;
+		}
+
+		#step-loading > div {
+			text-align: center;
+			color: black;
+			max-width: 60%;
+		}
+
+		#step-loading > div h3 {
+			font-size: 4vw;
+		}
+
+		.valign {
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			-webkit-box-align: center;
+
+			align-items: center;
+ 			justify-content: center;
+		}
+
+		.picbox {
+			float: left;
+			width: 15vw;
+			height: 15vw;
+			background-size: cover;
+			margin: 0 3vw 3vw 0;
+		}
+
 	</style>
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<!--	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
--->
 
 </head>
 <body>
 
-	<div id="main">
-		<img src="logo.jpg">
+	<div id="step-choose" class="step">
+		<a name="step-choose"></a>
 
-		<div id="step-choose" class="step">
-			<h1>-Vad vill en sådan som du smaska på idag då?</h2>
-			<p>
-				<a class="choose-category btn btn-primary" data-search="healthy food">Nyttigt</a>
-				<a class="choose-category btn btn-primary" data-search="">Onyttigt</a>
-				<a class="choose-category btn btn-primary" data-search="">Tyskt</a>
-				<a class="choose-category btn btn-primary" data-search="">Spagetti</a>
-				<a class="choose-category btn btn-primary" data-search="">Nordkoreanskt</a>
-				<a class="choose-category btn btn-primary" data-search="">Surkål</a>
-				<a class="choose-category btn btn-primary" data-search="">Burgare</a>
-			</p>
+		<div class="textbox">
+				<h1>Hungrigare än vanligt?</h1>
+				<p>
+					<span class="pinktext">- Jag vill ha:</span>
+					<a class="choose-category btn btn-primary" data-search="unhealthy%20food">Onyttigt</a>
+					<a class="choose-category btn btn-primary" data-search="german%20food">Tyskt</a>
+					<a class="choose-category btn btn-primary" data-search="spaghetti">Spagetti</a>
+					<a class="choose-category btn btn-primary" data-search="healthy%20food">Nyttigt</a>
+					<a class="choose-category btn btn-primary" data-search="saurkraut">Surkål</a>
+					<a class="choose-category btn btn-primary" data-search="burgers">Burgare</a>
+					<a class="choose-category btn btn-primary" data-search="north%20korean%20food">Nordkoreanskt</a>
+				</p>				
 		</div>
-
-		<div id="step-loading" class="step">
-			<img src="calculator.gif">
-			<h3>Nu utför vi jätteavancerade beräkningar...</h3>
-		</div>
-
-		<div id="step-analyzed" class="step">
-			
-		</div>
-
-
 
 	</div>
+
+	<div id="step-loading" class="step valign">
+		<a name="step-loading"></a>
+		<div>
+			<img src="calculator.gif">
+			<h3>Nu utför vår avancerade AI beräkningar i molnet för att kalkylera din personliga meny...</h3>
+		</div>
+	</div>
+
+	<div id="step-gotpictures" class="step valign">
+		<a name="step-gotpictures"></a>
+			<h1>Vad ser smaskigt ut?</h1>
+			<div id="imageboxes">
+
+<!--
+<img class="picbox" src="https://s-media-cache-ak0.pinimg.com/236x/e9/8f/80/e98f805457a6a8c400553436f60c665f.jpg"><img class="picbox" src="http://cook-wise.com/wp-content/uploads/parser/famous-german-food-9.jpg"><img class="picbox" src="https://www.germany101.com/assets/img/germany101/culture/Balinese_Roasted_Pork_Ribs_-_Iga_Babi_Panggang_Bali.jpg"><img class="picbox" src="https://s-media-cache-ak0.pinimg.com/236x/cf/c7/f8/cfc7f88b2cfc006b2a331393aa3938c6.jpg"><img class="picbox" src="http://cook-wise.com/wp-content/uploads/parser/german-food-culture-5.jpg"><img class="picbox" src="http://www.sbs.com.au/food/sites/sbs.com.au.food/files/styles/single/public/marble-cake.jpg?itok=Kn00QmJH&amp;mtime=1414645011"><img class="picbox" src="http://www.expatica.com/media/upload/thumbs/418920.jpg"><img class="picbox" src="http://www.germany.info/contentblob/2012040/Hauptbereichsbild/222104/German_Food_cbx.jpg"><img class="picbox" src="http://www.worldwidewebawards.net/Food/images/labskaus_germany.jpg"><img class="picbox" src="https://storage.googleapis.com/cf2.primecp.com/master_images/AllFreeSlowCookerRecipes/bevarian-meatball.jpg">
+-->
+
+			</div>
+	</div>
+
+
+	<div id="step-analyzed" class="step">
+		<a name="step-analyzed"></a>
+			<!--<h1>Vad ser smaskigt ut?</h1>-->
+	</div>
+
+
 
 
 	<script>
 		$( document ).ready(function() {	// ready() is guaranteed to be executed after the DOM is ready, so this is usually the best place to attach all other event handlers and run other jQuery code
 			'use strict'
 
+		var currentStep = "";
+
+		function scrollToAnchor(aid){
+			var aTag = $("a[name='"+ aid +"']");
+			$('html,body').animate({scrollTop: aTag.offset().top},'slow');
+		}
+
+		$(".choose-category").on("click", function() {
+			var searchFor = $(this).data("search");
+			scrollToAnchor('step-loading');
+			setTimeout(function(){
+				GetImages(searchFor, function(images){
+					var img = "";
+					for(var i=0; i<images.length; i++) {
+						//img += '<img class="picbox" src="' + images[i] + '">';
+						img += '<div class="picbox" style="background-image:url(' + images[i] + ')"></div>';
+					}
+					$("#imageboxes").html(img);
+					scrollToAnchor('step-gotpictures');
+					setTimeout(function(){
+
+					},2000);
+				})
+			},2000);
+			
+		});
+
+
+
+/*
 			$(".choose-category").on("click", function() {
 				$("#step-choose").fadeOut("fast", function() {
 					$("#step-loading").fadeIn("fast", function() {
@@ -89,10 +224,11 @@
 					});
 				});
 			});
+*/
 
 
 
-
+			/* Microsoft Cognitive Services - Computer Vision API  */
 
 			var analyzeImage = function(imageUrl, callback) {
 
@@ -112,12 +248,42 @@
 					callback(data.description.tags);
 				})
 				.fail(function() {
-					alert("error");
+					console.log("Image analyzer failed...");
 				});
 
 
 			}
 		
+
+			/*** GOOLGE IMAGE SEARCH ***/
+			function GetImages(input, callback)
+			{
+				// Key to Search API
+				var key = "AIzaSyAnuYEIqHm3w7N_RuK8r9DdZtrpaYo1b3U";
+				// cx to Google custom search engine
+				var cx = "012414733199820334003:6qrva-eprqu";
+						
+				var startAt = Math.floor(Math.random() * 10) + 1;
+				
+					$.ajax({
+						url: 'https://www.googleapis.com/customsearch/v1?key=' + key + '&cx=' + cx +'&q=' + input + '&searchType=image&fileType=jpg&imgSize=medium&alt=json&start=' + startAt,
+						type: 'GET',
+						success: function(data) {
+							console.log("Success");
+							var images = [];
+							if(data.items.length > 0) {
+								$.each(data.items, function(index, item){
+									images.push(item.link);
+								})
+							}
+							callback(images);
+						},
+						error: function(){console.log('Google image search failed')}
+					});
+			}
+
+
+
 		});
 
 
