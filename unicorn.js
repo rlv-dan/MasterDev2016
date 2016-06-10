@@ -4,25 +4,42 @@ Dashboard.DrawGoogleMaps = function (queryStrings) {
 
 	if (queryStrings.length > 0) {
 
-		var mapsSource = "https://www.google.com/maps/embed/v1/place?q=";
+		var googleCallback = function callback(results, status) {
 
-		for (i = 0; i < queryStrings.length; i++) {
+			// Utility for creating map markers
+			function createMarker(place) {
+				var placeLoc = place.geometry.location;
+				var marker = new google.maps.Marker({
+						map : map,
+						position : place.geometry.location
+					});
 
-			mapsSource += queryStrings[1];
-
-			if (i < queryStrings.length - 1) {
-
-				mapsSource += ',';
-
+				google.maps.event.addListener(marker, 'click', function () {
+					infowindow.setContent(place.name);
+					infowindow.open(map, this);
+				});
 			}
 
+			if (status === google.maps.places.PlacesServiceStatus.OK) {
+				for (var i = 0; i < results.length; i++) {
+					createMarker(results[i]);
+				}
+			}
 		}
-		mapsSource += '&zoom=17&key=AIzaSyBqQX9KXcsnaFQkRszM8o0Zx3wA9jSRUwo';
-		jQuery('#google-maps-iframe').attr('src', mapsSource);
-
-		jQuery('#google-maps-iframe').show();
 
 	}
+
+	var hqLocation = {
+		lat : 55.7093099,
+		lng : 13.1904653
+	};
+
+	var service = new google.maps.places.PlacesService(map);
+	service.nearbySearch({
+		location : hqLocation,
+		radius : 5000,
+		type : queryStrings
+	}, googleCallback);
 
 }
 
@@ -58,7 +75,7 @@ Dashboard.StartSoundcloud = function (queryStrings) {
 
 			var widgetSource = "https://w.soundcloud.com/player/?url=" + trackUri + "&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"
 
-			jQuery('#soundcloud-widget').attr('src', widgetSource);
+				jQuery('#soundcloud-widget').attr('src', widgetSource);
 
 			jQuery('#soundcloud-widget').show();
 
@@ -69,7 +86,16 @@ Dashboard.StartSoundcloud = function (queryStrings) {
 }
 
 $(document).ready(function () {
-	var queryStrings = ["banana", "apple", "cheese"];
-	Dashboard.DrawGoogleMaps(queryStrings);
-	Dashboard.StartSoundcloud(queryStrings);
+
+	function checkVariable() {
+
+		if (typeof google !== 'undefined') {
+			var queryStrings = ["restaurant", "apple", "cheese"];
+			Dashboard.DrawGoogleMaps(queryStrings);
+			Dashboard.StartSoundcloud(queryStrings);
+		}
+	}
+
+	setTimeout(checkVariable, 100);
+
 });
