@@ -50,7 +50,7 @@ Dashboard.StartSoundcloud = function (queryStrings) {
 	});
 
 	var scQuery = {};
-
+  scQuery.embeddable_by = "all"; 
 	scQuery.q = "";
 
 	for (i = 0; i < queryStrings.length; i++) {
@@ -84,18 +84,3 @@ Dashboard.StartSoundcloud = function (queryStrings) {
 	});
 
 }
-
-$(document).ready(function () {
-
-	function checkVariable() {
-
-		if (typeof google !== 'undefined') {
-			var queryStrings = ["restaurant", "apple", "cheese"];
-			Dashboard.DrawGoogleMaps(queryStrings);
-			Dashboard.StartSoundcloud(queryStrings);
-		}
-	}
-
-	setTimeout(checkVariable, 100);
-
-});

@@ -1,4 +1,34 @@
 ﻿<!doctype html>
+<!--
+                               ,|     
+                             //|                              ,|
+                           //,/                             -~ |
+                         // / |                         _-~   /  ,
+                       /'/ / /                       _-~   _/_-~ |
+                      ( ( / /'                   _ -~     _-~ ,/'
+                       \~\/'/|             __--~~__--\ _-~  _/,
+               ,,)))))));, \/~-_     __--~~  --~~  __/~  _-~ /
+            __))))))))))))));,>/\   /        __--~~  \-~~ _-~
+           -\(((((''''(((((((( >~\/     --~~   __--~' _-~ ~|
+  --==//////((''  .     `)))))), /     ___---~~  ~~\~~__--~ 
+          ))| @    ;-.     (((((/           __--~~~'~~/
+          ( `|    /  )      )))/      ~~~~~__\__---~~__--~~--_
+             |   |   |       (/      ---~~~/__-----~~  ,;::'  \         ,
+             o_);   ;        /      ----~~/           \,-~~~\  |       /|
+                   ;        (      ---~~/         `:::|      |;|      < >
+                  |   _      `----~~~~'      /      `:|       \;\_____// 
+            ______/\/~    |                 /        /         ~------~
+          /~;;.____/;;'  /          ___----(   `;;;/               
+         / //  _;______;'------~~~~~    |;;/\    /          
+        //  | |                        /  |  \;;,\              
+       (<_  | ;                      /',/-----'  _>
+        \_| ||_                     //~;~~~~~~~~~ 
+            `\_|                   (,~~ 
+                                    \~\ 
+                                     ~~ 
+
+-->
+
 <html>
 <head>
 
@@ -16,27 +46,19 @@
 			height: 100%;
 			font-family: 'Righteous', sans-serif;
 			color: white;
-
-  
-
 		}
-				
+		
 		h1 {
 			font-size: 5vw;
 			color: white;
 			text-shadow: -1px -1px 0 deeppink, 1px -1px 0 deeppink, -1px 1px 0 deeppink, 1px 1px 0 deeppink;
 		}
-		/*h2 {
-			font-size: 3vw;
+		h2 {
+			margin-top: 1vw;
+			font-size: 2.5vw;
 			color: white;
 			text-shadow: -1px -1px 0 deeppink, 1px -1px 0 deeppink, -1px 1px 0 deeppink, 1px 1px 0 deeppink;
 		}
-		h3 {
-			font-size: 2vw;
-			color: white;
-			text-shadow: -1px -1px 0 deeppink, 1px -1px 0 deeppink, -1px 1px 0 deeppink, 1px 1px 0 deeppink;
-		}*/
-
 		.pinktext {
 			color: white;
 			text-shadow: -1px -1px 0 deeppink, 1px -1px 0 deeppink, -1px 1px 0 deeppink, 1px 1px 0 deeppink;
@@ -57,21 +79,21 @@
 			background-size: cover;
 		}
 
-		#step-loading {
-			background-color: white;
+		#step-loading1 {
+			background-color: #fd82b1;
+		}
+		#step-loading2 {
+			background-color: #fd82b1;
 		}
 
 		#step-gotpictures {
 			background-color: #de4887;
-			/*background-image: url('http://i.kinja-img.com/gawker-media/image/upload/nc0zjjk16k1xjfvmwhcc.jpg');
-			background-size: cover;*/
 		}
 
 
 		#step-final {
-			background-color: lightblue;
-			/*background-image: url('http://i.kinja-img.com/gawker-media/image/upload/nc0zjjk16k1xjfvmwhcc.jpg');
-			background-size: cover;*/
+			background-image: url('fluff.jpg');
+			background-size: cover;
 		}
 		
 
@@ -84,7 +106,7 @@
 
 		#step-loading1 > div, #step-loading2 > div {
 			text-align: center;
-			color: black;
+			color: white;
 			max-width: 60%;
 		}
 
@@ -109,7 +131,7 @@
 			text-align: center;
 		}
 
-		.imageboxes {
+		#imageboxes {
 			padding-top: 50px;
 			padding-left: 6vw;
 		}
@@ -120,10 +142,28 @@
 			height: 15vw;
 			background-size: cover;
 			margin: 0 3vw 3vw 0;
+			cursor: pointer;
 		}
 
+		.step-final-list {
+			float: left;
+			width: 45%;
+			color: white;
+    		font-size: 1.75vw;
+			padding: 3%;
+		}
+		.step-final-widgets {
+			float: left;
+			width: 45%;
+			padding: 3%;
+		}
+
+
 	</style>
+	
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"  > </script>
+	<script   src="unicorn.js" > </script>
 
 </head>
 <body>
@@ -137,10 +177,12 @@
 					<a class="choose-category btn btn-primary" data-search="unhealthy%20food">Onyttigt</a>
 					<a class="choose-category btn btn-primary" data-search="german%20food">Tyskt</a>
 					<a class="choose-category btn btn-primary" data-search="spaghetti">Spagetti</a>
+					<a class="choose-category btn btn-primary" data-search="bacon">Bacon</a>
 					<a class="choose-category btn btn-primary" data-search="healthy%20food">Nyttigt</a>
 					<a class="choose-category btn btn-primary" data-search="saurkraut">Surkål</a>
 					<a class="choose-category btn btn-primary" data-search="burgers">Burgare</a>
 					<a class="choose-category btn btn-primary" data-search="north%20korean%20food">Nordkoreanskt</a>
+					<a class="choose-category btn btn-primary" data-search="snakes%20cooking">Kobror</a>
 				</p>				
 		</div>
 
@@ -149,15 +191,16 @@
 	<a name="step-loading1"></a>
 	<div id="step-loading1" class="step valign">
 		<div class="valign-inner">
-			<img src="calculator.gif">
+			<img src="calculator.gif" width="128" height="186">
 			<h3>Nu utför vår avancerade AI beräkningar i molnet för att kalkylera din personliga meny...</h3>
+			
 		</div>
 	</div>
 
 	<a name="step-gotpictures"></a>
 	<div id="step-gotpictures" class="step valign">
 			<div class="valign-inner">
-				<h1>Vad ser smaskigt ut?</h1>
+				<h1>Nom nom nom - välj något!</h1>
 				<div id="imageboxes">
 				</div>
 			</div>
@@ -166,78 +209,107 @@
 	<a name="step-loading2"></a>
 	<div id="step-loading2" class="step valign">
 		<div class="valign-inner">
-			<img src="calculator.gif">
-			<h3>Nu utför vår avancerade AI beräkningar i molnet för att kalkylera din personliga meny...</h3>
+			<img src="calculator.gif" width="128" height="186">
+			<h3>Working on it...</h3>
 		</div>
 	</div>
 
 	<a name="step-final"></a>
 	<div id="step-final" class="step">
+
+		<div class="step-final-list"></div>
+		<div class="step-final-widgets">
+
+			<div class="step-final-content">
+				<h2>Eller så går du till en restaurang som serverar detta:</h2>
+				<div id="google-map" style = "height: 300px; width: 400px;">		
+				</div>
+					<script>
+			var map;
+			var infowindow;
+			function initMap() {
+				map = new google.maps.Map(document.getElementById('google-map'), {
+						center : {
+							lat : 55.7093099,
+							lng : 13.1904653
+						},
+						zoom : 12
+					});
+
+				infowindow = new google.maps.InfoWindow();
+				}
+					</script>
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqQX9KXcsnaFQkRszM8o0Zx3wA9jSRUwo&callback=initMap&libraries=places" async defer> </script>
+
+					<h2>Samtidigt passar det bra att lyssna på:</h2>
+					<div id="soundcloud-wrapper">
+						<iframe id ="soundcloud-widget" style="display:none" width="500" height="400" scrolling="no" frameborder="no" ></iframe>
+					</div>
+			</div>
+		</div>
 	</div>
 
 
-
-
-
 	<script>
+
 		$( document ).ready(function() {	// ready() is guaranteed to be executed after the DOM is ready, so this is usually the best place to attach all other event handlers and run other jQuery code
 			'use strict'
 
-		var currentStep = "";
+			var currentStep = "";
 
-		function scrollToAnchor(aid){
-			var aTag = $("a[name='"+ aid +"']");
-			$('html,body').animate({scrollTop: aTag.offset().top},'slow');
-		}
+			function scrollToAnchor(aid){
+				var aTag = $("a[name='"+ aid +"']");
+				$('html,body').animate({scrollTop: aTag.offset().top},'slow');
+			}
 
-		$(".choose-category").on("click", function() {
-			var searchFor = $(this).data("search");
-			scrollToAnchor('step-loading');
-			setTimeout(function(){
-				GetImages(searchFor, function(images){
-					var img = "";
-					for(var i=0; i<images.length; i++) {
-						//img += '<img class="picbox" src="' + images[i] + '">';
-						img += '<div class="picbox" style="background-image:url(' + images[i] + ')"></div>';
-					}
-					$("#imageboxes").html(img);
-					scrollToAnchor('step-gotpictures');
-					setTimeout(function(){
-
-					},2000);
-				})
-			},2000);
-			
-		});
-
-
-
-/*
 			$(".choose-category").on("click", function() {
-				$("#step-choose").fadeOut("fast", function() {
-					$("#step-loading").fadeIn("fast", function() {
-						analyzeImage("http://ste.india.com/sites/default/files/2015/05/15/357551-fish.jpg", function(tags){
-							$("#step-loading").fadeOut("fast", function() {
+				var searchFor = $(this).data("search");
+				scrollToAnchor('step-loading1');
+				setTimeout(function(){
+					GetImages(searchFor, function(images){
+						var img = "";
+						for(var i=0; i<images.length; i++) {
+							img += '<div class="picbox" style="background-image:url(' + images[i] + ')"></div>';
+						}
+						$("#imageboxes").html(img);
+						scrollToAnchor('step-gotpictures');
 
-								var html = "<ul>", i;
-								for(i=0; i<tags.length; i++) {
-									html += "<li>" + tags[i] + "</li>";
-								}
-								html += "</ul>";
+						$(".picbox").on("click", function() {
+							var imageUrl = $(this).css("background-image");
+							imageUrl = imageUrl.replace('url("',"").replace('")',"");
+
+							scrollToAnchor('step-loading2');
+							analyzeImage(imageUrl, function(tags, description){
+								console.log(tags);
 								
-								$("#step-analyzed").html(html);
-								$("#step-analyzed").fadeIn("fast", function() {
+								var list = "<h2>Inköpslista för att laga '" + description + "':</h2><ul>";
+								for(var i=0; i<tags.length; i++) {
+									list += '<li>' + tags[i] + '</li>';
+								}
+								list += "</ul>";
+								$(".step-final-list").html(list);
 
-
-
-								});
+								var searchTerms = tags;
+								var bannedWords = ['food', 'plate', 'table', 'large', 'sitting', 'top', 'bowl', 'side', 'hot', 'covered', 'indoor', 'displayed', 'different', 'various'];
+								for (var i = 0; i < bannedWords.length; i++){
+									var index = searchTerms.indexOf(bannedWords[i]);
+									if (index >= 0 ){
+										searchTerms.splice(index, 1);
+									}
+								}
+								Dashboard.DrawGoogleMaps(searchTerms);
+								Dashboard.StartSoundcloud(searchTerms);
+								setTimeout(function(){
+									$(".step-final-content").show();
+									scrollToAnchor('step-final');
+								},2000);
 							});
-						});
-					});
-				});
-			});
-*/
 
+						});
+
+					})
+				},2000);
+			});
 
 
 			/* Microsoft Cognitive Services - Computer Vision API  */
@@ -257,7 +329,7 @@
 					data: '{ "url": "' + imageUrl + '"}'
 				})
 				.done(function(data) {
-					callback(data.description.tags);
+					callback(data.description.tags, data.description.captions[0].text );
 				})
 				.fail(function() {
 					console.log("Image analyzer failed...");
@@ -298,6 +370,21 @@
 
 		});
 
+
+
+		/* UNIT TESTING */
+		
+		var add = function(a,b) {
+			return a + b;
+		}
+		
+		if( add(1,2) === 3) {
+			console.info("Unit testing completed sucessfully!");
+		} else {
+			console.error("Unit testing failed!");
+		}
+		
+		
 
 
 	</script>
