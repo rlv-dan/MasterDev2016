@@ -1,28 +1,40 @@
 <html>
-<head>
-<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
-<script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
-<script   src="unicorn.js"></script>
-</head>
-<body>
-<div id="unicorn-dashboard">
+	<head>
+		<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"  > </script>
+		<script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous" > </script>
+		<script   src="unicorn.js" > </script>
+	</head>
+	<body>
+		<div id="unicorn-dashboard">
 
-	<div id="google-maps-wrapper">
-		<iframe id="google-maps-iframe" src="https://www.google.com/maps/embed/v1/place?q=hamburgers,food
-      &zoom=17
-      &key=AIzaSyBqQX9KXcsnaFQkRszM8o0Zx3wA9jSRUwo" style="display:none">
-		</iframe>
-	</div>
-	
-	<div id="soundcloud-wrapper">
-	<iframe id ="soundcloud-widget" style="display:none" width="300" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/267237017&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>	
-	</div>
-	
-</div>
-</body>
+			<div id="google-map" style = "height: 300px; width: 300px;">		
+			</div>
+			<script>
+      var map;
+      var infowindow;
+      function initMap() {
+      	debugger;
+      	map = new google.maps.Map(document.getElementById('google-map'), {
+      			center : {
+      				lat : 55.7093099,
+      				lng : 13.1904653
+      			},
+      			zoom : 12
+      		});
+
+      	infowindow = new google.maps.InfoWindow();
+		}
+			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqQX9KXcsnaFQkRszM8o0Zx3wA9jSRUwo&callback=initMap&libraries=places" async defer> </script>
+
+			<div id="soundcloud-wrapper">
+				<iframe id ="soundcloud-widget" style="display:none" width="300" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/267237017&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"/>	
+			</div>
+
+		</div>
+	</body>
 </html>
 
 
 
 
-				
