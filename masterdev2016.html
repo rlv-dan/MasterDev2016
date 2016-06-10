@@ -1,0 +1,128 @@
+﻿<!doctype html>
+<html>
+<head>
+	<!--<link rel="stylesheet" type="text/css" media="all" href="http://bool.se/wp-content/themes/Bool2013/style.css" />-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<style>
+		body {
+			margin: 10px;
+			padding: 10px;
+			text-align: center;
+		}
+		
+		div.step {
+			margin-top: 50px;
+		}
+		
+		#step-choose{
+			
+		}
+
+		#step-loading {
+			display: none;
+		}
+		
+	</style>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<!--	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+-->
+
+</head>
+<body>
+
+	<div id="main">
+		<img src="logo.jpg">
+
+		<div id="step-choose" class="step">
+			<h1>-Vad vill en sådan som du smaska på idag då?</h2>
+			<p>
+				<a class="choose-category btn btn-primary" data-search="healthy food">Nyttigt</a>
+				<a class="choose-category btn btn-primary" data-search="">Onyttigt</a>
+				<a class="choose-category btn btn-primary" data-search="">Tyskt</a>
+				<a class="choose-category btn btn-primary" data-search="">Spagetti</a>
+				<a class="choose-category btn btn-primary" data-search="">Nordkoreanskt</a>
+				<a class="choose-category btn btn-primary" data-search="">Surkål</a>
+				<a class="choose-category btn btn-primary" data-search="">Burgare</a>
+			</p>
+		</div>
+
+		<div id="step-loading" class="step">
+			<img src="calculator.gif">
+			<h3>Nu utför vi jätteavancerade beräkningar...</h3>
+		</div>
+
+		<div id="step-analyzed" class="step">
+			
+		</div>
+
+
+
+	</div>
+
+
+	<script>
+		$( document ).ready(function() {	// ready() is guaranteed to be executed after the DOM is ready, so this is usually the best place to attach all other event handlers and run other jQuery code
+			'use strict'
+
+			$(".choose-category").on("click", function() {
+				$("#step-choose").fadeOut("fast", function() {
+					$("#step-loading").fadeIn("fast", function() {
+						analyzeImage("http://ste.india.com/sites/default/files/2015/05/15/357551-fish.jpg", function(tags){
+							$("#step-loading").fadeOut("fast", function() {
+
+								var html = "<ul>", i;
+								for(i=0; i<tags.length; i++) {
+									html += "<li>" + tags[i] + "</li>";
+								}
+								html += "</ul>";
+								
+								$("#step-analyzed").html(html);
+								$("#step-analyzed").fadeIn("fast", function() {
+
+
+
+								});
+							});
+						});
+					});
+				});
+			});
+
+
+
+
+
+			var analyzeImage = function(imageUrl, callback) {
+
+
+				$.ajax({
+					url: "https://api.projectoxford.ai/vision/v1.0/analyze?visualFeatures=Description,Tags,Categories",
+					beforeSend: function(xhrObj){
+						// Request headers
+						xhrObj.setRequestHeader("Content-Type","application/json");
+						xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","b6e2b5fae7004debbe3f11521b31ade6");
+					},
+					type: "POST",
+					// Request body
+					data: '{ "url": "' + imageUrl + '"}'
+				})
+				.done(function(data) {
+					callback(data.description.tags);
+				})
+				.fail(function() {
+					alert("error");
+				});
+
+
+			}
+		
+		});
+
+
+
+	</script>
+
+</body>
+</html>
